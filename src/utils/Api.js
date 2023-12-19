@@ -1,8 +1,9 @@
 export const baseUrl = "https://test.scserver.org/";
+export const baseUrl2 = "https://test.visech.com/api/";
 
 export const EndPoints = {
-  login: "weblogin", // login from website
-  forgetPassword: "webforgotpassword", // forget Passsword from web
+  login: "web-login", // login from website
+  forgetPassword: "update-password", // forget Passsword from web
   getAllJobs: "job", //All Jobs
   getAllUsers: "getusers", // All getusers
   getWebUsers: "webusers", // web users

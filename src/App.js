@@ -22,7 +22,7 @@ function App() {
   return (
     <React.Fragment>
       <BrowserRouter>
-        {!items?.userId ? (
+        {!items?.id ? (
           <AuthenticationRoute />
         ) : (
           <MainPage />
