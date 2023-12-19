@@ -1,0 +1,33 @@
+.main {
+  /* margin-left: -10rem; */
+}
+.main-container {
+  background-color: #ffffff;
+  width: 95%;
+  height: 28rem;
+  border-radius: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 14px 30px 0px #0000000d;
+}
+.right-styling {
+  margin-bottom: 3.5rem;
+}
+.left-styling {
+  margin-top: 2.5rem;
+}
+.input-Foucsed:focus {
+  color: #dc2f2b;
+  outline: 1.4px solid #dc2f2b;
+}
+
+.checkBoxStyl {
+  color: #dc2f2b;
+  filter: sepia(90%) brightness(100%) hue-rotate(270deg) saturate(80%)
+    contrast(300%);
+}
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+}

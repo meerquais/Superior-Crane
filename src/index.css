@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  src: local("Poppins"),
+    url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+}
+
+code {
+  font-family: "Poppins", sans-serif;
+  src: local("Poppins"),
+    url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+}

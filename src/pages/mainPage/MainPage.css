@@ -1,0 +1,78 @@
+body {
+  background-color: rgba(220, 47, 43, 0.05);
+  overflow-x: hidden;
+}
+
+.header-style {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 1);
+  width: 100%;
+}
+
+.user-avatr-styling {
+  margin-right: 1rem;
+}
+
+.userName-style {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  font-weight: 800;
+  margin-right: 1.7rem;
+}
+.icons-style {
+  position: relative;
+  right: 1.4rem;
+  bottom: 0.15rem;
+  cursor: pointer;
+}
+.sidebar-parent {
+  overflow-y: hidden;
+  width: 15rem;
+  height: 52rem;
+  background-color: #dc2f2b;
+}
+.logo-styling {
+  position: absolute;
+  margin-top: 3rem;
+  margin-left: 5rem;
+}
+.text-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 2.5rem;
+  margin-top: 3rem;
+}
+.mobile-Msg {
+  display: none;
+}
+@media only screen and (max-width: 900px) {
+  .parent-div-dashboard {
+    display: none;
+  }
+  .mobile-Msg {
+    background-color: rgba(255, 255, 255, 1);
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50%;
+    text-align: center;
+    padding: 3px;
+    border-radius: 10px;
+    box-shadow: 10px 14px 30px 10px #0000000d;
+  }
+  .msg {
+    font-size: 28px;
+    color: #00000d;
+    font-weight: 500;
+  }
+}

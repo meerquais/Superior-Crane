@@ -1,0 +1,177 @@
+.main-con {
+  display: flex;
+  width: 91%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 3rem;
+}
+.main-card {
+  width: 93%;
+  height: 12rem;
+  background-color: #ffffff;
+  padding-top: 3rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0px 14px 30px 0px #0000000d;
+  margin-left: 2rem;
+}
+.mini-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.sub-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropDownStyling {
+  width: 16.313rem;
+  /* height: 2.375rem; */
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+.dateStyling {
+  width: 16.313rem;
+  height: 2.375rem;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 14px;
+  color: hsl(0, 0%, 20%);
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.btn-container {
+  margin: 3rem 0rem 0rem 3rem;
+}
+.btn-filter-style {
+  width: 9.75rem;
+  height: 2.5rem;
+  border: 1px solid #dc2f2b;
+  background-color: #dc2f2b;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0em;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+.title-class {
+  display: flex;
+  width: 91%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 3rem;
+
+}
+.text {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.table-main-card {
+  width: 90%;
+  background-color: #ffffff;
+  padding-top: 3rem;
+  border: 3px solid #0000000d;
+  border-radius: 10px;
+  box-shadow: 0px 14px 30px 0px #0000000d;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+  height: 20rem;
+  margin-left: 2rem;
+
+}
+
+.rigger-table {
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  width: 99%;
+  border-right: 3;
+  border-radius: 5px;
+  height: 14rem;
+  
+}
+.hack1 {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  
+}
+
+.hack2 {
+  width: 100%;
+  height: 19rem;
+  overflow: scroll;
+}
+.th-styling {
+  padding: 10px;
+  white-space:nowrap;
+  border-right: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  text-align: center;
+  font-size: 15px;
+  font-weight:800;
+  color: #000000;
+}
+.item-styling {
+  padding: 19px;
+  white-space:nowrap;
+  text-align: center;
+  border-right: 1px solid #f2f2f2;
+  font-size: 13px;
+  font-weight: 500;
+
+}
+
+/* .mainContiner {
+  display: flex;
+}
+
+.card-style {
+  width: 63rem;
+  height: 12rem;
+  background-color: #ffffff;
+  padding-top: 3rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0px 14px 30px 0px #0000000d;
+  margin-left: 2rem;
+}
+
+.dropdownStyling {
+  width: 20rem;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 20px;
+}
+.btn-Styling {
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+.joblistCard-styling {
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 20rem;
+  width: 63rem;
+  padding-right: 10px;
+  padding-left: 8px;
+  border-radius: 10px;
+  box-shadow: 0px 14px 30px 0px #0000000d;
+  margin-left: 2rem;
+} */

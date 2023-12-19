@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "zhang-renyang.vscode-react",
+        "burkeholland.simple-react-snippets",
+        "dsznajder.es7-react-js-snippets",
+        "rodrigovallades.es7-react-js-snippets",
+        "equimper.react-native-react-redux"
+    ]
+}
