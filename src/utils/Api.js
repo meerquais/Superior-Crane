@@ -4,6 +4,8 @@ export const baseUrl2 = "https://test.visech.com/api/";
 export const EndPoints = {
   login: "web-login", // login from website
   forgetPassword: "update-password", // forget Passsword from web
+  sendOtp: "send-otp", // sending opt from web
+  verifyOtp: "verify-otp", // verification of the otp
   getAllJobs: "job", //All Jobs
   getAllUsers: "getusers", // All getusers
   getWebUsers: "webusers", // web users

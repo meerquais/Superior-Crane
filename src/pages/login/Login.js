@@ -99,7 +99,7 @@ const Login = () => {
               <p
                 className="forget-pass-title"
                 onClick={() => {
-                  navigate("/forgetPassword");
+                  navigate("/sendotp");
                 }}
               >
                 Forget Your password

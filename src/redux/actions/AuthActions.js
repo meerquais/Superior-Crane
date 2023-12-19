@@ -3,6 +3,8 @@ import {
   CHNAGE_PASSWORD_LOADING,
   FORGET_PASSWORD,
   LOADING_STATE,
+  VERIFY_OTP_SUCCESS,
+  VERIFY_OTP_FAILURE,
   USER_LOGIN,
 } from "../reducers/AuthReducer";
 import { EndPoints, baseUrl, baseUrl2 } from "../../utils/Api";
@@ -118,6 +120,91 @@ export const signOutUser = (navigate) => {
 //     }
 //   };
 // };
+
+
+export const sendOtp = (email, navigate) => {
+  return async (dispatch) => {
+    dispatch({ type: LOADING_STATE, payload: true });
+
+    try {
+      const response = await fetch(`${baseUrl2}${EndPoints.sendOtp}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
+
+      const content = await response.json();
+
+      if (response.status === 200) {
+        // Handle success
+        dispatch({ type: LOADING_STATE, payload: false });
+        alert("OTP sent successfully");
+        navigate("/verify-otp"); // Adjust the route based on your application
+      } else if (response.status === 422) {
+        // Handle validation errors
+        alert("Validation failed: " + content.message);
+        console.log("Validation errors:", content.errors);
+        dispatch({ type: LOADING_STATE, payload: false });
+      } else {
+        // Handle other errors
+        alert("Failed to send OTP");
+        console.log("Error:", content);
+        dispatch({ type: LOADING_STATE, payload: false });
+      }
+    } catch (error) {
+      console.error("Error in sendOtp:", error);
+      alert("An error occurred while sending OTP");
+      dispatch({ type: LOADING_STATE, payload: false });
+    }
+  };
+};
+
+
+
+export const verifyOtp = (userData, navigate) => {
+  return async (dispatch) => {
+    dispatch({ type: LOADING_STATE, payload: true });
+
+    try {
+      const response = await fetch(`${baseUrl2}${EndPoints.verifyOtp}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: userData.userEmail,
+          otp: userData.otp,
+        }),
+      });
+
+      const content = await response.json();
+
+      if (response.status === 200) {
+        dispatch({ type: VERIFY_OTP_SUCCESS, payload: content });
+        dispatch({ type: LOADING_STATE, payload: false });
+        alert("OTP verified successfully");
+        navigate("/forgetPassword"); // Change Password Page
+      } else {
+        dispatch({ type: VERIFY_OTP_FAILURE, payload: content });
+        dispatch({ type: LOADING_STATE, payload: false });
+        // Handle failure, you may want to display an error message
+        alert("Failed to verify OTP. Please try again.");
+        console.error("Failed to verify OTP:", content);
+      }
+    } catch (error) {
+      dispatch({ type: LOADING_STATE, payload: false });
+      console.error("Error in verifyOtp:", error);
+    }
+  };
+};
+
+
 
 export const changePassword = (userData, navigate) => {
   return async (dispatch) => {
