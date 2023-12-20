@@ -15,6 +15,7 @@ const OptVerify = () => {
   const loader = useSelector((state) => state?.auth?.isLoading);
 
   const [userCredentials, setUserCredentials] = useState({
+    userEmail: "", // Add userEmail field to the state
     otp: "", // Add OTP field to the state
   });
 
@@ -40,6 +41,18 @@ const OptVerify = () => {
           >
             OTP Verification
           </h2>
+          <div style={{ marginLeft: 35 }}>
+            <label className="title">Email Address</label>
+            <CustomInput
+              type={"text"}
+              placeholder={"Enter Your Email"}
+              inputStyling={"input-style"}
+              onChange={handleChange}
+              value={userCredentials.userEmail}
+              name={"userEmail"}
+              id={"userEmail"}
+            />
+          </div>
           <div style={{ marginLeft: 35 }}>
             <label className="title">Enter Your OTP</label>
             <CustomInput
