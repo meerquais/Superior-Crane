@@ -9,7 +9,7 @@ import { verifyOtp } from "../../redux/actions/AuthActions";
 import ReactLoading from "react-loading";
 import { useNavigate } from "react-router-dom";
 
-const OptVerify = () => {
+const OtpVerify = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loader = useSelector((state) => state?.auth?.isLoading);
@@ -41,7 +41,7 @@ const OptVerify = () => {
           >
             OTP Verification
           </h2>
-          <div style={{ marginLeft: 35 }}>
+          {/* <div style={{ marginLeft: 35 }}>
             <label className="title">Email Address</label>
             <CustomInput
               type={"text"}
@@ -52,7 +52,7 @@ const OptVerify = () => {
               name={"userEmail"}
               id={"userEmail"}
             />
-          </div>
+          </div> */}
           <div style={{ marginLeft: 35 }}>
             <label className="title">Enter Your OTP</label>
             <CustomInput
@@ -97,4 +97,4 @@ const OptVerify = () => {
   );
 };
 
-export default OptVerify;
+export default OtpVerify;

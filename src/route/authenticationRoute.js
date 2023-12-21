@@ -10,8 +10,8 @@ const AuthenticationRoute = () => {
     <React.Fragment>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/sendotp" element={<OtpSend/>} />
-        <Route path="/verify-otp" element={<OptVerify/>} />
+        {/* <Route path="/sendotp" element={<OtpSend/>} />
+        <Route path="/verify-otp" element={<OptVerify/>} /> */}
         <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

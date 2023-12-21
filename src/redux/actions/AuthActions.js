@@ -144,7 +144,9 @@ export const sendOtp = (email, navigate) => {
         // Handle success
         dispatch({ type: LOADING_STATE, payload: false });
         alert("OTP sent successfully");
-        navigate("/verify-otp"); // Adjust the route based on your application
+        // Save email in localStorage
+        localStorage.setItem("items", JSON.stringify({ email }));
+        // navigate("/verify-otp"); // Adjust the route based on your application
       } else if (response.status === 422) {
         // Handle validation errors
         alert("Validation failed: " + content.message);
@@ -166,11 +168,16 @@ export const sendOtp = (email, navigate) => {
 
 
 
+
 export const verifyOtp = (userData, navigate) => {
   return async (dispatch) => {
     dispatch({ type: LOADING_STATE, payload: true });
 
     try {
+
+      const storedData = JSON.parse(localStorage.getItem("items")) || {};
+      const email = storedData.email;
+
       const response = await fetch(`${baseUrl2}${EndPoints.verifyOtp}`, {
         method: "POST",
         headers: {
@@ -178,7 +185,7 @@ export const verifyOtp = (userData, navigate) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: userData.userEmail,
+          email: email,
           otp: userData.otp,
         }),
       });
@@ -186,16 +193,23 @@ export const verifyOtp = (userData, navigate) => {
       const content = await response.json();
 
       if (response.status === 200) {
+        // Save OTP in the "items" of localStorage
+        localStorage.setItem("items", JSON.stringify({ ...JSON.parse(localStorage.getItem("items")), otp: userData.otp }));
+
         dispatch({ type: VERIFY_OTP_SUCCESS, payload: content });
         dispatch({ type: LOADING_STATE, payload: false });
         alert("OTP verified successfully");
-        navigate("/forgetPassword"); // Change Password Page
-      } else {
-        dispatch({ type: VERIFY_OTP_FAILURE, payload: content });
+        // navigate("/forgetPassword"); // Change Password Page
+      } else if (response.status === 422) {
+        // Handle validation errors
+        alert("Validation failed: " + content.message);
+        console.log("Validation errors:", content.errors);
         dispatch({ type: LOADING_STATE, payload: false });
-        // Handle failure, you may want to display an error message
-        alert("Failed to verify OTP. Please try again.");
-        console.error("Failed to verify OTP:", content);
+      } else {
+        // Handle other errors
+        alert("Failed to verify OTP");
+        console.log("Error:", content);
+        dispatch({ type: LOADING_STATE, payload: false });
       }
     } catch (error) {
       dispatch({ type: LOADING_STATE, payload: false });
@@ -206,10 +220,16 @@ export const verifyOtp = (userData, navigate) => {
 
 
 
+
+
 export const changePassword = (userData, navigate) => {
   return async (dispatch) => {
     dispatch({ type: LOADING_STATE, payload: true });
     try {
+
+      const storedData = JSON.parse(localStorage.getItem("items")) || {};
+      const email = storedData.email;
+
       const forgetResponse = await fetch(
         `${baseUrl2}${EndPoints.forgetPassword}`,
         {
@@ -219,7 +239,7 @@ export const changePassword = (userData, navigate) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: userData.userEmail,
+            email: email,
             password: userData.userPassword,
             password_confirmation: userData.confirmPassword,
           }),
@@ -232,6 +252,7 @@ export const changePassword = (userData, navigate) => {
         dispatch({ type: LOADING_STATE, payload: false });
         dispatch({ type: FORGET_PASSWORD, payload: content });
         alert("Password changed successfully");
+        localStorage.removeItem("items")
         navigate("/");
       } else {
         console.log(content); // Log the response for debugging

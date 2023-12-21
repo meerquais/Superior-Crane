@@ -16,8 +16,9 @@ const AddJobsCard = ({
   const [data, setData] = useState({
     jobTime: "",
     clientName: "",
-    date: "",
+    jobDate: "",
     notes: "",
+    isSCCI: false,
     equipmentUsed: "",
     riggerAssigned: "",
     address: "",
@@ -82,10 +83,10 @@ const AddJobsCard = ({
             style={addJobsStyling.inputStyling}
             type={"date"}
             placeholder={"Enter Date Here"}
-            value={data?.date}
+            value={data?.jobDate}
             onChange={handleChange}
-            name={"date"}
-            id={"date"}
+            name={"jobDate"}
+            id={"jobDate"}
           />
           <div
             style={{
@@ -109,7 +110,7 @@ const AddJobsCard = ({
             <input
               checked={Check ? true : false}
               onChange={(e) => {
-                setCheck(e?.target?.checked);
+                setCheck(e.target?.checked);
               }}
               className={checkBoxStyl}
               type="checkbox"
@@ -124,6 +125,7 @@ const AddJobsCard = ({
           >
             <PrimaryBtn
               onclick={() => {
+                // console.log(data);
                 dispatch(
                   creatingNewJob(
                     data,

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { EndPoints, baseUrl } from "../../utils/Api";
+import { EndPoints, baseUrl, baseUrl2 } from "../../utils/Api";
 import {
   CHANGE_USER_STATUS,
   CREATE_NEW_ROLES,
@@ -102,7 +102,8 @@ export const updateUser = (userID, status, role) => {
   };
 };
 
-//Creating New Job
+// Creating New Job
+
 export const creatingNewJob = (
   data,
   files,
@@ -117,7 +118,7 @@ export const creatingNewJob = (
     //If Image Exist or Not
     const formData = new FormData();
     formData.append("clientName", data?.clientName);
-    formData.append("jobDate", data?.date);
+    formData.append("jobDate", data?.jobDate);
     formData.append("jobTime", data?.jobTime);
     formData.append("address", data?.address);
     formData.append("equipmentToBeUsed", data?.equipmentUsed);
@@ -128,15 +129,19 @@ export const creatingNewJob = (
     images?.map((item) => {
       return formData.append("imageFiles", item, item?.name);
     });
-    formData.append("isSCCI", isSCCI);
-    formData.append("userId", items?.userId);
+    formData.append("isSCCI", isSCCI ? "true" : "false");
+    formData.append("userId", items?.id);
     formData.append("statusCode", 'goodTogo');
+    console.log('Data:', data);
+    console.log('Images:', images);
+    console.log('Form Data:', formData);
     try {
       dispatch({ type: USER_LOADER, payload: true });
       const rawResponse = await fetch(`${baseUrl}${EndPoints.jobPost}`, {
         method: "POST",
         body: formData,
       });
+      console.log('Raw Response:', rawResponse);
       const jobPostResponse = await rawResponse.json();
       if (rawResponse.status == 201) {
         alert("Job Posted SuccessFully!");
@@ -145,9 +150,11 @@ export const creatingNewJob = (
         navigate("/joblists");
       } else {
         alert(jobPostResponse?.error);
+        console.error('Error details:', jobPostResponse);
         dispatch({ type: USER_LOADER, payload: false });
       }
     } catch (error) {
+      console.error('Error:', error);
       dispatch({ type: USER_LOADER, payload: false });
     }
   };
