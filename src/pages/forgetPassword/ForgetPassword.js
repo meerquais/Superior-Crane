@@ -124,7 +124,7 @@ const ForgetPassword = () => {
 
   return (
     <div className="parent-div" style={{ margin: 0, padding: 0 }}>
-      <div className="main-div">
+      <div className="main-div" >
         {(verificationState.emailInLocalStorage && verificationState.otpVerified) ? (
           <>
             <h2 style={{

@@ -30,7 +30,7 @@ const OtpSend = () => {
   return (
     <>
       <div className="parent-div">
-        <div className="main-div">
+        <div className="main-div" style={{ minHeight: "640px" }}>
           <h2
             style={{
               fontSize: 29,

@@ -115,7 +115,7 @@ export const creatingNewJob = (
 ) => {
   return async (dispatch) => {
     const items = JSON.parse(localStorage.getItem("items"));
-    //If Image Exist or Not
+    // If Image Exist or Not
     const formData = new FormData();
     formData.append("clientName", data?.clientName);
     formData.append("jobDate", data?.jobDate);
@@ -129,36 +129,39 @@ export const creatingNewJob = (
     images?.map((item) => {
       return formData.append("imageFiles", item, item?.name);
     });
-    formData.append("isSCCI", isSCCI ? "true" : "false");
+    formData.append("isSCCI", isSCCI ? 1 : 0);
     formData.append("userId", items?.id);
-    formData.append("statusCode", 'goodTogo');
-    console.log('Data:', data);
-    console.log('Images:', images);
-    console.log('Form Data:', formData);
+    formData.append("statusCode", "goodTogo");
+    console.log("Data:", data);
+    console.log("Images:", images);
+    console.log("Form Data:", formData);
     try {
       dispatch({ type: USER_LOADER, payload: true });
       const rawResponse = await fetch(`${baseUrl2}${EndPoints.jobPost}`, {
         method: "POST",
         body: formData,
       });
-      console.log('Raw Response:', rawResponse);
+      console.log("Raw Response:", rawResponse);
       const jobPostResponse = await rawResponse.json();
-      if (rawResponse.status == 201) {
-        alert("Job Posted SuccessFully!");
+      if (jobPostResponse.status === 200 && jobPostResponse.message === "Job added successfully.") {
+        // This is the success case
+        alert("Job added successfully!");
         dispatch({ type: POST_JOB, payload: jobPostResponse });
         dispatch({ type: USER_LOADER, payload: false });
         navigate("/joblists");
       } else {
-        alert(jobPostResponse?.error);
-        console.error('Error details:', jobPostResponse);
+        // This is the error case
+        console.error("Error details:", jobPostResponse);
+        alert(jobPostResponse?.message || "An error occurred");
         dispatch({ type: USER_LOADER, payload: false });
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
       dispatch({ type: USER_LOADER, payload: false });
     }
   };
 };
+
 
 //Create Roles for Web
 export const createRolesforUsers = (data) => {
@@ -169,7 +172,7 @@ export const createRolesforUsers = (data) => {
         data?.role === "Admin"
           ? `${EndPoints.adminCreation}`
           : `${EndPoints.managerCreation}`;
-      const rawResponse = await fetch(`${baseUrl}${endpoint}`, {
+      const rawResponse = await fetch(`${baseUrl2}${endpoint}`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -179,11 +182,12 @@ export const createRolesforUsers = (data) => {
           name: data?.name,
           email: data?.email,
           password: data?.password,
-          passwordConf: data?.confirmPassword,
-          role: data?.role,
+          password_confirmation: data?.confirmPassword,
+          role: data?.role.toLowerCase(), 
         }),
       });
       const content = await rawResponse.json();
+      console.log('API Response:', content);
       if (rawResponse?.status == 200) {
         alert(content?.message);
         dispatch({ type: USER_LOADER, payload: false });

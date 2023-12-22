@@ -12,11 +12,11 @@ export const EndPoints = {
   updateUser: "updateuser", //For the Admins:
   editUser: "edituser", //For the Managers and Basic Users:
   getJoByWeek: "jobweek", //week jobs
-  jobPost:'jobs', //Created new job
+  jobPost:'create-job', //Created new job
   jobFilter:'jobfilter',// Job filter by Name,Address,Date
   imageUploads:'upload', //Picture Upload
-  adminCreation:'webregister', //Create NEW Admin
-  managerCreation:'register', //Creation NEW Manager
+  adminCreation:'create-user', //Create NEW Admin
+  managerCreation:'create-user', //Creation NEW Manager
   getRiggerTickets:'ticket', //To Get Rigger Tickets
   exportExcelData:'excel', //Export Excel Data
   filterRiggerTicketsData:'riggerfilter', //Filter Rigger Data
