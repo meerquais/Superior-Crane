@@ -137,7 +137,7 @@ export const creatingNewJob = (
     console.log('Form Data:', formData);
     try {
       dispatch({ type: USER_LOADER, payload: true });
-      const rawResponse = await fetch(`${baseUrl}${EndPoints.jobPost}`, {
+      const rawResponse = await fetch(`${baseUrl2}${EndPoints.jobPost}`, {
         method: "POST",
         body: formData,
       });
