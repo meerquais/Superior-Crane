@@ -12,44 +12,86 @@ import {
 } from "../reducers/UserReducer";
 
 //GET MANAGER_&_USER
-export const getUsersDetail = (date) => {
+// export const getUsersDetail = (role) => {
+//   return async (dispatch) => {
+//     dispatch({ type: USER_LOADER, payload: true });
+//     try {
+//       const userId = JSON.parse(localStorage.getItem('items'))?.id;
+//       axios
+//         .get(`${baseUrl2}${EndPoints.getAllUsers}/${userId}?role=${role}`)
+//         .then((res) => {
+//           dispatch({ type: GET_USERS, payload: res?.data });
+//           dispatch({ type: USER_LOADER, payload: false });
+//         })
+//         .catch((err) => {
+//           dispatch({ type: USER_LOADER, payload: false });
+//         });
+//     } catch (error) {
+//       dispatch({ type: USER_LOADER, payload: false });
+//     }
+//   };
+// };
+
+export const getUsersDetail = (role) => {
   return async (dispatch) => {
     dispatch({ type: USER_LOADER, payload: true });
     try {
-      axios
-        .get(`${baseUrl}${EndPoints.getAllUsers}?role=${date}`)
-        .then((res) => {
-          dispatch({ type: GET_USERS, payload: res?.data });
-          dispatch({ type: USER_LOADER, payload: false });
-        })
-        .catch((err) => {
-          dispatch({ type: USER_LOADER, payload: false });
-        });
+      const userId = JSON.parse(localStorage.getItem('items'))?.id;
+      const response = await axios.get(`${baseUrl2}${EndPoints.getAllUsers}/${userId}?role=${role}`);
+      
+      // Assuming response.data.data is the array of users you want
+      dispatch({ type: GET_USERS, payload: response?.data.data });
+
+      dispatch({ type: USER_LOADER, payload: false });
+      // console.log(response);
     } catch (error) {
+      console.error('Error fetching users:', error);
       dispatch({ type: USER_LOADER, payload: false });
     }
   };
 };
 
 //GET_Admin
-export const getWebUser = (date) => {
+// export const getWebUser = (role) => {
+//   return async (dispatch) => {
+//     dispatch({ type: USER_LOADER, payload: true });
+//     try {
+//       const userId = JSON.parse(localStorage.getItem('items'))?.id;
+//       axios
+//         .get(`${baseUrl2}${EndPoints.getWebUsers}/${userId}?role=${role}`)
+//         .then((res) => {
+//           dispatch({ type: GET_USERS, payload: res?.data });
+//           dispatch({ type: USER_LOADER, payload: false });
+//           console.log(res)
+//         })
+//         .catch((err) => {
+//           dispatch({ type: USER_LOADER, payload: false });
+//         });
+//     } catch (error) {
+//       dispatch({ type: USER_LOADER, payload: false });
+//     }
+//   };
+// };
+
+export const getWebUser = (role) => {
   return async (dispatch) => {
     dispatch({ type: USER_LOADER, payload: true });
     try {
-      axios
-        .get(`${baseUrl}${EndPoints.getWebUsers}?role=${date}`)
-        .then((res) => {
-          dispatch({ type: GET_USERS, payload: res?.data });
-          dispatch({ type: USER_LOADER, payload: false });
-        })
-        .catch((err) => {
-          dispatch({ type: USER_LOADER, payload: false });
-        });
+      const userId = JSON.parse(localStorage.getItem('items'))?.id;
+      const response = await axios.get(`${baseUrl2}${EndPoints.getWebUsers}/${userId}?role=${role}`);
+      
+      // Assuming response.data.data is the array of users you want
+      dispatch({ type: GET_USERS, payload: response?.data.data });
+
+      dispatch({ type: USER_LOADER, payload: false });
+      // console.log(response);
     } catch (error) {
+      console.error('Error fetching web users:', error);
       dispatch({ type: USER_LOADER, payload: false });
     }
   };
 };
+
 
 //FOR Update ADMIN
 export const updateWebAdmin = (userId, status) => {

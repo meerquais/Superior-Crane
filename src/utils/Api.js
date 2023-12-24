@@ -7,8 +7,8 @@ export const EndPoints = {
   sendOtp: "send-otp", // sending opt from web
   verifyOtp: "verify-otp", // verification of the otp
   getAllJobs: "jobs", //All Jobs
-  getAllUsers: "getusers", // All getusers
-  getWebUsers: "webusers", // web users
+  getAllUsers: "users", // All getusers
+  getWebUsers: "users", // web users
   updateUser: "updateuser", //For the Admins:
   editUser: "edituser", //For the Managers and Basic Users:
   getJoByWeek: "jobweek", //week jobs

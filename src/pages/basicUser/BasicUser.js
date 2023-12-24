@@ -5,8 +5,11 @@ import { DailyUser } from "../../utils/dummyData";
 import "./BasicUser.css";
 import { getUsersDetail } from "../../redux/actions/UserAction";
 
-const BasicUser = () => {
+const BasicUser = ({ role }) => {
   const dispatch = useDispatch();
+  const fetchUsers = () => {
+    dispatch(getUsersDetail(role));
+  };
   return (
     <div className="main-basic">
       <div
@@ -20,9 +23,7 @@ const BasicUser = () => {
         <h3 >BASIC USER
         </h3>
         <span
-          onClick={() => {
-            dispatch(getUsersDetail("User"));
-          }}
+         onClick={fetchUsers("BasicUser")}
           style={{
             fontSize: "1.5rem",
             marginRight: "2.3rem",
