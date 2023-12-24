@@ -6,7 +6,7 @@ export const EndPoints = {
   forgetPassword: "update-password", // forget Passsword from web
   sendOtp: "send-otp", // sending opt from web
   verifyOtp: "verify-otp", // verification of the otp
-  getAllJobs: "job", //All Jobs
+  getAllJobs: "jobs", //All Jobs
   getAllUsers: "getusers", // All getusers
   getWebUsers: "webusers", // web users
   updateUser: "updateuser", //For the Admins:
